@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Karibu — coming soon</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1EB53A;
+      --yellow: #FCD116;
+      --black: #000;
+      --blue: #00A3DD;
+      --paper: #FFFFFF;
+      --ink: #1a1a1a;
+    }
+    * { margin: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: "Bricolage Grotesque", system-ui, -apple-system, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    /* The one bold thing: the diagonal band from the Tanzanian flag */
+    .band {
+      position: fixed;
+      inset: -50%;
+      background: linear-gradient(
+        135deg,
+        transparent 0 44%,
+        var(--yellow) 44% 45.5%,
+        var(--black) 45.5% 54.5%,
+        var(--yellow) 54.5% 56%,
+        transparent 56% 100%
+      );
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .corner-green, .corner-blue {
+      position: fixed;
+      width: 38vmax;
+      height: 38vmax;
+      pointer-events: none;
+    }
+    .corner-green { top: 0; left: 0; background: var(--green); clip-path: polygon(0 0, 100% 0, 0 100%); }
+    .corner-blue  { bottom: 0; right: 0; background: var(--blue); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+    main {
+      position: relative;
+      text-align: center;
+      padding: 2rem;
+      max-width: 34rem;
+      background: var(--paper);
+      border-radius: 1.5rem;
+    }
+    h1 {
+      font-weight: 800;
+      font-size: clamp(3rem, 12vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+    p {
+      margin-top: 1.25rem;
+      font-size: clamp(1rem, 2.6vw, 1.2rem);
+      line-height: 1.5;
+    }
+    .sw { font-weight: 800; }
+    @media (prefers-reduced-motion: no-preference) {
+      main { animation: rise 0.8s ease-out both; }
+      @keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+    }
+  </style>
+</head>
+<body>
+  <div class="corner-green" aria-hidden="true"></div>
+  <div class="corner-blue" aria-hidden="true"></div>
+  <div class="band" aria-hidden="true"></div>
+  <main>
+    <h1>Karibu!</h1>
+    <p><span class="sw">Inakuja hivi karibuni.</span><br>Your page is almost ready. Scan your keychain again soon.</p>
+  </main>
+</body>
+</html>
