@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/organic-a1dd9e52-d6f2-48a3-b21c-fbe2a261a028/styles.css">
+  <script src="_ds/organic-a1dd9e52-d6f2-48a3-b21c-fbe2a261a028/_ds_bundle.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--color-bg); -webkit-font-smoothing: antialiased; }
+    a { color: var(--color-accent-700); }
+    a:hover { color: var(--color-accent-800); }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);overflow-x:clip">
+
+  <header style="position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--color-bg) 84%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+    <div style="max-width:1180px;margin:0 auto;padding:14px clamp(20px,5vw,56px);display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:16px;margin-right:auto">
+        <img src="logo.svg" alt="Logo" style="height:34px;width:auto">
+        <span style="width:1px;height:24px;background:var(--color-divider)"></span>
+        <span style="font-family:var(--font-heading);font-size:18px">{{ t.brand }}</span>
+      </div>
+      <div class="seg" role="radiogroup" aria-label="Language" style="background:var(--color-neutral-100)">
+        <label class="seg-opt" style="padding:8px 16px;font-weight:600"><input type="radio" name="lang" checked="{{ isSw }}" onChange="{{ setSw }}">Kiswahili</label>
+        <label class="seg-opt" style="padding:8px 16px;font-weight:600"><input type="radio" name="lang" checked="{{ isEn }}" onChange="{{ setEn }}">English</label>
+      </div>
+    </div>
+  </header>
+
+  <section style="max-width:1180px;margin:0 auto;padding:clamp(40px,7vw,96px) clamp(20px,5vw,56px) clamp(72px,10vw,140px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,88px);align-items:center">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:22px">
+      <span data-reveal="0" class="tag tag-accent-2" style="font-size:14px;padding:6px 16px;font-weight:600">{{ forLabel }}</span>
+      <h1 data-reveal="120" style="margin:0;font-size:clamp(40px,6.2vw,78px);line-height:1.04;letter-spacing:-0.02em;text-wrap:balance">
+        <sc-if value="{{ hasPerson }}" hint-placeholder-val="{{ true }}"><span style="display:block;color:var(--color-accent-700)">{{ heroName }}</span></sc-if>
+        {{ heroTitle }}
+      </h1>
+      <p data-reveal="240" style="margin:0;max-width:30em;font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:var(--color-neutral-800);text-wrap:pretty">{{ heroSub }}</p>
+      <a data-reveal="360" href="#ujumbe" class="btn btn-secondary" style="margin-top:8px;padding:12px 22px;font-size:15px;color:var(--color-text);gap:10px">
+        {{ t.scroll }}
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+      </a>
+    </div>
+    <div style="position:relative;padding:28px 12px 36px 28px">
+      <div data-parallax="-0.06" style="position:absolute;top:-6px;right:-18px;width:clamp(140px,18vw,230px);aspect-ratio:1;border-radius:50%;background:var(--color-accent-2-300)"></div>
+      <div data-parallax="0.05" style="position:absolute;bottom:0;left:0;width:clamp(80px,9vw,120px);aspect-ratio:1;border-radius:50%;background:var(--color-accent-300)"></div>
+      <div data-reveal="200" style="position:relative">
+        <div style="border-radius:46% 54% 38% 62% / 52% 40% 60% 48%;overflow:hidden;aspect-ratio:4/3.4;box-shadow:var(--shadow-lg)">
+          <img class="washed" src="photos/16.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 52%">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ujumbe" style="scroll-margin-top:80px;max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px) clamp(80px,11vw,150px)">
+    <h2 data-reveal="0" style="margin:0 0 clamp(32px,4vw,52px);font-size:clamp(32px,4vw,50px);max-width:16em;text-wrap:balance">{{ t.msgTitle }}</h2>
+    <div style="columns:3 300px;column-gap:22px">
+      <sc-for list="{{ messages }}" as="m" hint-placeholder-count="6">
+        <div data-reveal="{{ m.delay }}" style="break-inside:avoid;padding-bottom:22px">
+          <article class="card" style="padding:clamp(22px,2.4vw,30px);gap:16px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--color-accent-2-200);color:var(--color-accent-2-800);font-family:var(--font-heading);font-size:19px">{{ m.initial }}</span>
+              <span style="font-family:var(--font-heading);font-size:21px;line-height:1.1">{{ m.author }}</span>
+            </div>
+            <p style="margin:0;font-size:16px;line-height:1.68;white-space:pre-line;text-wrap:pretty">{{ m.text }}</p>
+            <sc-if value="{{ m.hasBtn }}" hint-placeholder-val="{{ true }}">
+              <button class="btn btn-ghost" onClick="{{ m.toggle }}" style="align-self:flex-start;font-family:var(--font-body);font-weight:600;font-size:13px;padding:6px 10px;margin-left:-10px;color:var(--color-accent-700);gap:8px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+                {{ m.btnLabel }}
+              </button>
+            </sc-if>
+          </article>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="picha" style="scroll-margin-top:80px;max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px) clamp(80px,11vw,150px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 32px;margin-bottom:clamp(32px,4vw,52px)">
+      <h2 data-reveal="0" style="margin:0;font-size:clamp(32px,4vw,50px)">{{ t.galTitle }}</h2>
+      <p data-reveal="100" style="margin:0;font-size:15px;color:var(--color-neutral-700)">{{ t.galHint }}</p>
+    </div>
+    <div style="columns:3 240px;column-gap:18px">
+      <sc-for list="{{ photos }}" as="p" hint-placeholder-count="6">
+        <figure data-reveal="{{ p.delay }}" style="break-inside:avoid;margin:0 0 18px">
+          <button onClick="{{ p.open }}" aria-label="{{ p.label }}" style="display:block;width:100%;padding:0;border:0;background:var(--color-surface);cursor:zoom-in;border-radius:var(--radius-lg);overflow:hidden;transition:transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s ease" style-hover="transform:translateY(-4px);box-shadow:var(--shadow-lg)">
+            <img class="washed" src="{{ p.src }}" alt="" loading="lazy" style="width:100%;height:auto">
+          </button>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px) clamp(80px,11vw,150px)">
+    <h2 data-reveal="0" style="margin:0 0 clamp(28px,3.5vw,44px);font-size:clamp(32px,4vw,50px)">{{ t.groupTitle }}</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,56px)">
+      <div data-reveal="80" style="display:flex;flex-direction:column;gap:16px;grid-column:span 2;min-width:0">
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-2-700)">{{ t.students }}</span>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ students }}" as="s" hint-placeholder-count="8">
+            <sc-if value="{{ s.isMe }}" hint-placeholder-val="{{ false }}">
+              <span style="display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:var(--color-accent-700);color:var(--color-neutral-100);font-weight:600;font-size:16px">{{ s.name }}<span style="font-weight:400;opacity:.85">· {{ t.you }}</span></span>
+            </sc-if>
+            <sc-if value="{{ s.notMe }}" hint-placeholder-val="{{ true }}">
+              <span style="display:inline-flex;align-items:center;padding:11px 20px;border-radius:999px;background:var(--color-surface);font-weight:600;font-size:16px">{{ s.name }}</span>
+            </sc-if>
+          </sc-for>
+        </div>
+      </div>
+      <div data-reveal="180" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-2-700)">{{ t.teachers }}</span>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ teachers }}" as="s" hint-placeholder-count="2">
+            <sc-if value="{{ s.isMe }}" hint-placeholder-val="{{ false }}">
+              <span style="display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:var(--color-accent-700);color:var(--color-neutral-100);font-weight:600;font-size:16px">{{ s.name }}<span style="font-weight:400;opacity:.85">· {{ t.you }}</span></span>
+            </sc-if>
+            <sc-if value="{{ s.notMe }}" hint-placeholder-val="{{ true }}">
+              <span style="display:inline-flex;align-items:center;padding:11px 20px;border-radius:999px;background:var(--color-surface);font-weight:600;font-size:16px">{{ s.name }}</span>
+            </sc-if>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1180px;margin:0 auto;padding:0 clamp(12px,3vw,32px) clamp(24px,3vw,32px)">
+    <div data-reveal="0" style="border-radius:clamp(32px,4vw,56px);background:var(--color-accent-2-800);color:var(--color-neutral-100);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,4vw,56px);align-items:center;position:relative;overflow:hidden">
+      <div data-parallax="-0.04" style="position:absolute;right:-80px;top:-80px;width:260px;aspect-ratio:1;border-radius:50%;background:var(--color-accent-2-700)"></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:18px;align-items:flex-start">
+        <h2 style="margin:0;font-size:clamp(38px,5.4vw,68px);line-height:1.05;text-wrap:balance">{{ closeTitle }}</h2>
+        <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:var(--color-accent-2-100)">{{ t.closeSub }}</p>
+      </div>
+      <div style="position:relative;border-radius:999px 999px var(--radius-lg) var(--radius-lg);overflow:hidden;aspect-ratio:4/3">
+        <img class="washed" src="photos/05.jpeg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+      </div>
+    </div>
+  </section>
+
+  <footer style="max-width:1180px;margin:0 auto;padding:28px clamp(20px,5vw,56px) 44px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;font-size:14px;color:var(--color-neutral-700)">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <span>{{ t.brand }} · 2026</span>
+      <span>© 2026 Jonas Van Onckelen</span>
+    </div>
+    <img src="logo.svg" alt="Logo" style="height:28px;width:auto;opacity:.85">
+  </footer>
+
+  <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ lbClose }}" style="position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:clamp(16px,4vw,48px);background:color-mix(in srgb, var(--color-neutral-900) 88%, transparent)">
+      <img src="{{ lbSrc }}" alt="" onClick="{{ stop }}" style="max-width:100%;max-height:86vh;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);cursor:default">
+      <button onClick="{{ lbClose }}" aria-label="Close" style="position:absolute;top:18px;right:18px;width:48px;height:48px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--color-bg);color:var(--color-text);cursor:pointer" style-hover="background:var(--color-accent-200)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+      <button onClick="{{ lbPrev }}" aria-label="Previous" style="position:absolute;left:18px;top:50%;margin-top:-24px;width:48px;height:48px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--color-bg);color:var(--color-text);cursor:pointer" style-hover="background:var(--color-accent-200)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+      </button>
+      <button onClick="{{ lbNext }}" aria-label="Next" style="position:absolute;right:18px;top:50%;margin-top:-24px;width:48px;height:48px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--color-bg);color:var(--color-text);cursor:pointer" style-hover="background:var(--color-accent-200)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+      </button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;person&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;wote&quot;,&quot;yohana&quot;,&quot;saraphina&quot;,&quot;erick&quot;,&quot;charlse&quot;,&quot;debora&quot;,&quot;criff&quot;,&quot;melania&quot;,&quot;mena&quot;,&quot;joseph&quot;,&quot;josephat&quot;],&quot;default&quot;:&quot;wote&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Mtu&quot;},&quot;showSlots&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Picha&quot;}}">
+const PEOPLE = {
+  yohana: { name: 'Yohana Mzena', role: 's' },
+  saraphina: { name: 'Saraphina Samwel', role: 's' },
+  erick: { name: 'Erick Swai', role: 's' },
+  charlse: { name: 'Charlse Mavika', role: 's' },
+  debora: { name: 'Debora Gabriel', role: 's' },
+  criff: { name: 'Criff Mdesa', role: 's' },
+  melania: { name: 'Melania Nzuku', role: 's' },
+  mena: { name: 'Mena Nziku', role: 's' },
+  joseph: { name: 'Joseph Ngomite', role: 't' },
+  josephat: { name: 'Josephat Maleli', role: 't', nick: 'Big Boss', title: { sw: 'Baba', en: 'Father' } }
+};
+
+const T = {
+  sw: {
+    brand: 'Tanzania × Ubelgiji', for: 'Kwa', teacher: 'Mwalimu', everyone: 'Kwa wote',
+    heroOne: 'ulikuja kama mgeni, unaondoka kama rafiki.',
+    heroAll: 'Mlikuja kama wageni, mnaondoka kama marafiki.',
+    subOne: 'Kumbukumbu za siku zetu pamoja Ubelgiji: picha, na maneno kutoka kwa marafiki uliowapata hapa.',
+    subAll: 'Kumbukumbu za siku zetu pamoja Ubelgiji: picha, na maneno kutoka kwa marafiki mliowapata hapa.',
+    scroll: 'Soma ujumbe', msgTitle: 'Maneno kutoka kwa marafiki zako',
+    galTitle: 'Siku zetu pamoja', galHint: 'Bonyeza picha kuiona kwa ukubwa.', addPhoto: 'Ongeza picha',
+    groupTitle: 'Kikundi chetu', students: 'Wanafunzi', teachers: 'Walimu', you: 'wewe',
+    close: 'Safari njema', closeSub: 'Kutoka Ubelgiji, kwa upendo.', footer: 'Kutoka Ubelgiji, kwa upendo.',
+    readOrig: 'Soma asili', back: 'Rudi kwenye tafsiri', langs: { en: 'Kiingereza', nl: 'Kiholanzi' }
+  },
+  en: {
+    brand: 'Tanzania × Belgium', for: 'For', teacher: 'Teacher', everyone: 'For everyone',
+    heroOne: 'you came as a visitor, you leave as a friend.',
+    heroAll: 'You came as visitors, but you leave as friends.',
+    subOne: 'Memories of our days together in Belgium: photos, and words from the friends you made here.',
+    subAll: 'Memories of our days together in Belgium: photos, and words from the friends you made here.',
+    scroll: 'Read the messages', msgTitle: 'Words from your friends',
+    galTitle: 'Our days together', galHint: 'Tap a photo to see it larger.', addPhoto: 'Add a photo',
+    groupTitle: 'Our group', students: 'Students', teachers: 'Teachers', you: 'you',
+    close: 'Safe travels', closeSub: 'From Belgium, with love.', footer: 'From Belgium, with love.',
+    readOrig: 'Read the original', back: 'Back to translation', langs: { en: 'English', nl: 'Dutch' }
+  }
+};
+
+const MSGS = [
+  { author: 'Mersel', lang: 'en',
+    orig: 'As your time in Belgium comes to an end, we want to thank you for the beautiful moments and memories we have shared. Even though we spent only a short time together, you have made it special.\nWe hope you enjoyed your stay, made new friendships and felt at home with us. We will miss your smiles, kindness and positive energy. As you return to Tanzania, we wish you a safe journey and all the best for your future.\nYou came as visitors, but you leave as friends. May the memories we made together stay in your hearts, just as they will stay in ours.',
+    sw: 'Muda wenu hapa Ubelgiji unapokaribia mwisho, tunataka kuwashukuru kwa nyakati nzuri na kumbukumbu tulizoshiriki pamoja. Ingawa tulikaa pamoja kwa muda mfupi tu, mmeufanya kuwa wa pekee.\nTunatumaini mlifurahia kukaa kwenu, mlipata marafiki wapya na mlijisikia nyumbani pamoja nasi. Tutakumbuka tabasamu zenu, wema wenu na nguvu zenu chanya. Mnaporudi Tanzania, tunawatakia safari salama na kila la heri katika maisha yenu ya baadaye.\nMlikuja kama wageni, lakini mnaondoka kama marafiki. Kumbukumbu tulizojenga pamoja zibaki mioyoni mwenu, kama zitakavyobaki mioyoni mwetu.' },
+  { author: 'Nora', lang: 'en',
+    orig: 'hey it was nice to have you guys in belgium. I hope you guys had a nice trip and will look back on this experience with great memories.',
+    sw: 'Hey, ilikuwa vizuri sana kuwa nanyi hapa Ubelgiji. Natumaini mlikuwa na safari nzuri na mtaikumbuka safari hii kwa kumbukumbu nzuri.' },
+  { author: 'Iggi', lang: 'nl',
+    orig: 'Hallo iedereen.\nIk wil even zeggen hoeveel plezier ik had met jullie te ontmoeten en jullie te leren kennen .\nIk vond het bowlen supertof samen met jullie.\nIk hoop dat jullie deze tijd samen ook tof vonden en gaan herinneren.\n(Iggi from belgium)',
+    en: 'Hello everyone.\nI just want to say how much fun I had meeting you and getting to know you.\nI thought bowling together with you was super fun.\nI hope you also enjoyed this time together and will remember it.\n(Iggi from Belgium)',
+    sw: 'Habari zenu nyote.\nNataka tu kusema jinsi nilivyofurahi kukutana nanyi na kuwafahamu.\nKucheza bowling pamoja nanyi kulikuwa poa sana.\nNatumaini nanyi mliufurahia muda huu pamoja na mtaukumbuka.\n(Iggi kutoka Ubelgiji)' },
+  { author: 'Liesje', lang: 'en',
+    orig: 'I am very happy to have been able to organize this opportunity for you. I have come to know you as a grateful group of inspiring young people. During our time together, I have seen you grow and flourish, and form new friendships. You were never too shy to connect with one another and learn from each other. I hope you can take much of what you have learned into your future professional and personal lives. I wish you all the very best, and perhaps our paths will cross again.',
+    sw: 'Nina furaha sana kwamba niliweza kuandaa fursa hii kwa ajili yenu. Nimewafahamu kama kundi la vijana wenye shukrani na wanaotia moyo. Katika muda wetu pamoja, nimewaona mkikua, mkistawi na kujenga urafiki mpya. Hamkuwahi kuona aibu kuungana na kujifunza kutoka kwa kila mmoja. Natumaini mtabeba mengi mliyojifunza katika maisha yenu ya kazi na ya binafsi siku zijazo. Nawatakia kila la heri, na huenda njia zetu zitakutana tena.' },
+  { author: 'Karolien', lang: 'en',
+    orig: 'It was a true privilege and an honor to host you here in Belgium. Your incredible hospitality made me feel completely at home in Tanzania last year, and I truly hope you felt just as welcome during your time here. It has been incredibly enriching to share experiences and exchange ideas with one another and to explore Lier with you. You are true bowling pros! 😉 Your positivity and gratitude are deeply engraved in my heart. I truly hope we will meet again in Tanzania!',
+    sw: 'Ilikuwa fursa na heshima ya kweli kuwakaribisha hapa Ubelgiji. Ukarimu wenu wa ajabu ulinifanya nijisikie nyumbani kabisa Tanzania mwaka jana, na natumaini kweli mlijisikia mmekaribishwa vivyo hivyo mlipokuwa hapa. Imekuwa na manufaa makubwa kushiriki uzoefu na kubadilishana mawazo, na kuchunguza Lier pamoja nanyi. Ninyi ni wataalamu wa kweli wa bowling! 😉 Chanya yenu na shukrani zenu vimechorwa kwa kina moyoni mwangu. Natumaini kweli tutakutana tena Tanzania!' },
+  { author: 'Fleur', lang: 'en',
+    orig: 'Heyy,\nThank you so much for this amazing expierience. You are an amazing group, and i love the ethusiasm! I hope you had a great time and i hope you will come back sometime. Byeeee\nFleur',
+    sw: 'Heyy,\nAsanteni sana kwa uzoefu huu wa ajabu. Ninyi ni kundi la ajabu, na napenda shauku yenu! Natumaini mlifurahi sana na natumaini mtarudi siku moja. Kwaheriii\nFleur' },
+  { author: 'Lynn', lang: 'nl',
+    orig: 'Beste leerlingen en leerkrachten,\n\nMet veel warmte willen we jullie een hartelijke groet sturen. We hopen dat jullie elke dag met veel plezier samen leren, groeien en nieuwe dromen ontdekken.\n\nAan  leerlingen: blijf nieuwsgierig, blijf in jezelf geloven en durf groot te dromen. Jullie zijn de toekomst en met jullie talenten kunnen jullie een mooie verandering maken.\n\nAan  leerkrachten: bedankt voor jullie inzet, geduld en liefde voor het onderwijs. Jullie geven niet alleen kennis door, maar helpen ook jonge mensen om sterker en zelfverzekerder in het leven te staan.\n\nWe wensen jullie allemaal veel geluk, vriendschap, succes en mooie momenten samen.\n\nEen warme groet vanuit België! 🇧🇪❤️🇹🇿',
+    en: 'Dear students and teachers,\n\nWith great warmth we send you a heartfelt greeting. We hope that every day you learn, grow and discover new dreams together, with lots of joy.\n\nTo the students: stay curious, keep believing in yourselves and dare to dream big. You are the future, and with your talents you can make a beautiful change.\n\nTo the teachers: thank you for your dedication, patience and love for teaching. You don’t only pass on knowledge, you also help young people stand stronger and more confident in life.\n\nWe wish you all lots of happiness, friendship, success and beautiful moments together.\n\nA warm greeting from Belgium! 🇧🇪❤️🇹🇿',
+    sw: 'Wanafunzi na walimu wapendwa,\n\nKwa uchangamfu mwingi tunawatumia salamu za dhati. Tunatumaini kwamba kila siku mnajifunza, mnakua na kugundua ndoto mpya pamoja kwa furaha tele.\n\nKwa wanafunzi: endeleeni kuwa wadadisi, endeleeni kujiamini na thubutuni kuota ndoto kubwa. Ninyi ndio wakati ujao, na kwa vipaji vyenu mnaweza kuleta mabadiliko mazuri.\n\nKwa walimu: asanteni kwa kujitolea kwenu, uvumilivu wenu na upendo wenu kwa elimu. Hamtoi maarifa tu, bali pia mnawasaidia vijana kusimama imara na kujiamini zaidi maishani.\n\nTunawatakia nyote furaha tele, urafiki, mafanikio na nyakati nzuri pamoja.\n\nSalamu za upendo kutoka Ubelgiji! 🇧🇪❤️🇹🇿' },
+  { author: 'Kyenna', lang: 'nl',
+    orig: 'Lieve leerlingen ❤️\nWat vinden we het superleuk dat jullie er zijn! 🥰 We zijn heel blij om jullie te mogen verwelkomen en hopen dat jullie je hier helemaal thuis voelen. We wensen jullie een prachtige tijd vol mooie herinneringen! 💕🌸',
+    en: 'Dear students ❤️\nWe think it’s so great that you’re here! 🥰 We’re very happy to welcome you and hope you feel completely at home here. We wish you a wonderful time full of beautiful memories! 💕🌸',
+    sw: 'Wanafunzi wapendwa ❤️\nTunafurahi sana kwamba mko hapa! 🥰 Tuna furaha kubwa kuwakaribisha na tunatumaini mtajisikia nyumbani kabisa. Tunawatakia wakati mzuri uliojaa kumbukumbu nzuri! 💕🌸' },
+  { author: 'Youssef', lang: 'nl',
+    orig: 'Hallo, Youssef hier. Ik wil gewoon zeggen : blijf doen waar jullie mee bezig zijn en blijf grote dromen hebben. Als jullie er hard voor blijven werken, weet ik zeker dat jullie die dromen ook kunnen waarmaken. Blijf erin geloven en geef nooit op!',
+    en: 'Hi, Youssef here. I just want to say: keep doing what you’re doing and keep dreaming big. If you keep working hard for it, I’m sure you can make those dreams come true. Keep believing in it and never give up!',
+    sw: 'Habari, ni Youssef hapa. Nataka tu kusema: endeleeni na mnachokifanya na endeleeni kuota ndoto kubwa. Mkiendelea kufanya kazi kwa bidii, nina uhakika mnaweza kuzitimiza ndoto hizo. Endeleeni kuamini na msikate tamaa kamwe!' }
+];
+
+MSGS.push({ author: 'Jonas', lang: 'nl',
+  orig: 'Hey allemaal het was me echt een eer om jullie allemaal te mogen ontmoeten en ik heb echt een geweldige twee weken gehad ik hoop dat jullie dit bezoek nooit zullen vergeten we hebben veel samen meegemaakt en hopelijk mooie herrineringen opgebouwd ik wens jullie allemaal heel veel succes in Tanzania ik weet wel 1 ding zolang je je passie blijft volgen zul je altijd een winnaar zijn of je nu arm of rijk bent zolang je blijft doen wat je graag doet ben je de winnaar geef ook de groeten aan jullie families thuis als jullie ooit hulp nodig hebben met vragen over laptops, computers, telefoons, of iets met elektronica stuur mij een berichtje of bel me op ik zal er altijd staan voor jullie veel succes nog en geef noit op!!!!',
+  en: 'Hey everyone, it was truly an honour to meet all of you, and I had an amazing two weeks. I hope you will never forget this visit. We went through a lot together and hopefully built beautiful memories. I wish you all lots of success in Tanzania. I do know one thing: as long as you keep following your passion, you will always be a winner. Whether you are poor or rich, as long as you keep doing what you love, you are the winner. Also say hello to your families at home. If you ever need help with questions about laptops, computers, phones or anything electronic, send me a message or call me. I will always be there for you. Good luck, and never give up!!!!',
+  sw: 'Habari zenu nyote, ilikuwa heshima kubwa kwangu kukutana nanyi nyote, na nimekuwa na wiki mbili nzuri sana. Natumaini hamtasahau ziara hii kamwe. Tumepitia mengi pamoja na natumaini tumejenga kumbukumbu nzuri. Nawatakia nyote mafanikio mengi huko Tanzania. Najua jambo moja: ukiendelea kufuata shauku yako, utakuwa mshindi daima. Uwe maskini au tajiri, ukiendelea kufanya unachokipenda, wewe ni mshindi. Pia wasalimieni familia zenu nyumbani. Mkiwahi kuhitaji msaada kuhusu laptop, kompyuta, simu au chochote cha kielektroniki, nitumieni ujumbe au nipigieni simu. Nitakuwepo kwa ajili yenu daima. Kila la heri, na msikate tamaa kamwe!!!!' });
+
+const PHOTOS = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19'].map(n => 'photos/' + n + '.jpeg');
+
+class Component extends DCLogic {
+  state = { lang: (() => { try { return localStorage.getItem('tz-lang') || 'sw'; } catch (e) { return 'sw'; } })(), orig: {}, open: -1 };
+
+  componentDidMount() {
+    this.reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'none';
+      this.io.unobserve(e.target);
+    }), { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+    this.scan();
+    this.onScroll = () => {
+      if (this.raf || this.reduce) return;
+      this.raf = requestAnimationFrame(() => {
+        this.raf = 0;
+        const y = window.scrollY;
+        document.querySelectorAll('[data-parallax]').forEach(el => {
+          el.style.transform = 'translate3d(0,' + (y * parseFloat(el.dataset.parallax)).toFixed(1) + 'px,0)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onKey = e => {
+      if (this.state.open < 0) return;
+      if (e.key === 'Escape') this.setState({ open: -1 });
+      if (e.key === 'ArrowRight') this.step(1);
+      if (e.key === 'ArrowLeft') this.step(-1);
+    };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentDidUpdate() {
+    this.scan();
+    document.body.style.overflow = this.state.open >= 0 ? 'hidden' : '';
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    this.io && this.io.disconnect();
+  }
+  scan() {
+    if (!this.io) return;
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '1');
+      if (this.reduce) return;
+      const d = parseInt(el.dataset.reveal, 10) || 0;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 1s ease ' + d + 'ms, transform 1.2s cubic-bezier(.2,.7,.2,1) ' + d + 'ms';
+      this.io.observe(el);
+    });
+  }
+  step(dir) {
+    this.setState(s => ({ open: (s.open + dir + PHOTOS.length) % PHOTOS.length }));
+  }
+  setLang(lang) {
+    try { localStorage.setItem('tz-lang', lang); } catch (e) {}
+    this.setState({ lang, orig: {} });
+  }
+
+  renderVals() {
+    const lang = this.state.lang === 'en' ? 'en' : 'sw';
+    const t = T[lang];
+    let key = this.props.person;
+    if (!key || key === 'wote') { try { key = new URLSearchParams(location.search).get('jina'); } catch (e) {} }
+    const p = key && PEOPLE[String(key).toLowerCase()];
+    const first = p ? p.name.split(' ')[0] : '';
+    const called = p ? (p.nick || (p.role === 't' ? t.teacher + ' ' + first : first)) : '';
+
+    const messages = MSGS.map((m, i) => {
+      const showOrig = !!this.state.orig[i];
+      const isOrigLang = m.lang === lang;
+      const text = showOrig || isOrigLang ? m.orig : m[lang];
+      return {
+        author: m.author, initial: m.author[0], text,
+        delay: (i % 3) * 110,
+        hasBtn: !isOrigLang,
+        btnLabel: showOrig ? t.back : t.readOrig + ' · ' + t.langs[m.lang],
+        toggle: () => this.setState(s => ({ orig: { ...s.orig, [i]: !s.orig[i] } }))
+      };
+    });
+
+    const mk = role => Object.keys(PEOPLE).filter(k => PEOPLE[k].role === role).map(k => {
+      const isMe = !!p && PEOPLE[k] === p;
+      return { name: PEOPLE[k].name + (PEOPLE[k].nick ? ' · ' + PEOPLE[k].nick : ''), isMe, notMe: !isMe };
+    });
+
+    return {
+      t, isSw: lang === 'sw', isEn: lang === 'en',
+      setSw: () => this.setLang('sw'), setEn: () => this.setLang('en'),
+      hasPerson: !!p,
+      forLabel: p ? t.for + ' ' + (p.title ? p.title[lang] + ' ' : p.role === 't' ? t.teacher + ' ' : '') + p.name : t.everyone,
+      heroName: called + ',',
+      heroTitle: p ? t.heroOne : t.heroAll,
+      heroSub: p ? t.subOne : t.subAll,
+      closeTitle: p ? t.close + ', ' + called + '.' : t.close + '.',
+      messages,
+      photos: PHOTOS.map((src, i) => ({ src, delay: (i % 3) * 90, label: 'Photo ' + (i + 1), open: () => this.setState({ open: i }) })),
+      students: mk('s'), teachers: mk('t'),
+      lbOpen: this.state.open >= 0,
+      lbSrc: PHOTOS[Math.max(0, this.state.open)],
+      lbClose: () => this.setState({ open: -1 }),
+      lbPrev: e => { e.stopPropagation(); this.step(-1); },
+      lbNext: e => { e.stopPropagation(); this.step(1); },
+      stop: e => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>
