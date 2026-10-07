@@ -1,0 +1,126 @@
+/* Welcome screen for the personal pages (see intro.js): the Tanzanian flag as
+   wrapping paper, a Belgian ribbon down the middle, and a gift tag on top. */
+
+html.tzi-lock { overflow: hidden; }
+/* while the page zooms into place it is briefly wider than the screen */
+html.tzi-zoom { overflow-x: hidden; }
+
+#tz-intro {
+  --tz-green: #1eb53a; --tz-yellow: #fcd116; --tz-black: #141414; --tz-blue: #00a3dd;
+  --be-black: #141414; --be-yellow: #fdda24; --be-red: #ef3340;
+  --b: clamp(24px, 3.4vw, 44px);   /* half of the black band */
+  --y: clamp(9px, 1.1vw, 14px);    /* yellow edge of the band */
+  --r: clamp(9px, 1.4vw, 17px);    /* one stripe of the ribbon */
+  position: fixed; inset: 0; z-index: 1000;
+  display: grid; place-items: center; overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  cursor: pointer; touch-action: none; -webkit-tap-highlight-color: transparent;
+}
+#tz-intro.is-opening { pointer-events: none; }
+
+/* — the flag, cut along the band into two halves — */
+.tzi-door {
+  position: absolute; inset: 0; overflow: hidden;
+  background: var(--tz-yellow);
+  transition: transform 1.05s cubic-bezier(.76, 0, .24, 1) .2s;
+  will-change: transform;
+}
+.tzi-door--a { z-index: 1; clip-path: polygon(0 0, 62% 0, 38% 100%, 0 100%); }
+.tzi-door--b { clip-path: polygon(60.5% 0, 100% 0, 100% 100%, 36.5% 100%); }
+.tzi-door > i { position: absolute; inset: 0; }
+.tzi-green { background: var(--tz-green); clip-path: polygon(0 0, calc(62% - var(--b) - var(--y)) 0, calc(38% - var(--b) - var(--y)) 100%, 0 100%); }
+.tzi-door--a .tzi-band { background: var(--tz-black); clip-path: polygon(calc(62% - var(--b)) 0, 100% 0, 100% 100%, calc(38% - var(--b)) 100%); }
+.tzi-door--b .tzi-band { background: var(--tz-black); clip-path: polygon(0 0, calc(62% + var(--b)) 0, calc(38% + var(--b)) 100%, 0 100%); }
+.tzi-blue { background: var(--tz-blue); clip-path: polygon(calc(62% + var(--b) + var(--y)) 0, 100% 0, 100% 100%, calc(38% + var(--b) + var(--y)) 100%); }
+.tzi-door > .tzi-ribbon {
+  left: calc(50% - 1.5 * var(--r)); right: auto; width: calc(3 * var(--r));
+  background: linear-gradient(90deg, var(--be-black) 0 33.34%, var(--be-yellow) 33.34% 66.67%, var(--be-red) 66.67%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .08);
+}
+.is-opening .tzi-door--a { transform: translate3d(-80%, 0, 0); }
+.is-opening .tzi-door--b { transform: translate3d(80%, 0, 0); }
+
+/* — the gift tag — */
+.tzi-tag {
+  position: relative; z-index: 3;
+  width: min(400px, calc(100vw - 48px));
+  padding: 34px 28px 26px;
+  border-radius: 22px;
+  background: var(--color-bg, #f5ead8);
+  color: var(--color-text, #201e1d);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .06), 0 22px 48px rgba(0, 0, 0, .38);
+  transform: rotate(-2deg);
+  text-align: left;
+}
+.tzi-hole {
+  position: absolute; top: 14px; left: calc(50% - 8px);
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--be-yellow);
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, .4), 0 0 0 3px var(--color-surface, #ebddc5);
+}
+.tzi-label {
+  display: block; margin: 0 0 4px;
+  font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--color-neutral-600, #82796a);
+}
+.tzi-name {
+  margin: 0 0 18px;
+  font-family: var(--font-heading, Georgia, serif); font-weight: 400;
+  font-size: clamp(44px, 12vw, 68px); line-height: 1; letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.tzi-from {
+  margin: 0 0 22px; padding-top: 16px;
+  border-top: 1.5px dashed var(--color-divider, rgba(32, 30, 29, .16));
+  font-size: 18px; font-weight: 600; line-height: 1.35;
+}
+.tzi-from .tzi-label { margin-bottom: 6px; }
+.tzi-open {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 15px 22px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--be-black); color: var(--color-neutral-100, #f9f4ed);
+  font-family: var(--font-heading, Georgia, serif); font-size: 19px; line-height: 1;
+  transition: background .2s ease, transform .2s ease;
+}
+.tzi-open svg { display: block; flex: none; }
+.tzi-open:hover { background: #2b2b2b; }
+.tzi-open:active { transform: scale(.98); }
+.tzi-open:focus { outline: none; }
+.tzi-open:focus-visible { outline: 3px solid var(--be-yellow); outline-offset: 3px; }
+
+/* tag lifts off the ribbon, then the flag splits */
+.is-opening .tzi-tag { animation: tzi-lift .7s cubic-bezier(.5, 0, .75, 0) forwards; }
+
+/* — confetti — */
+.tzi-burst { position: absolute; z-index: 2; width: 0; height: 0; pointer-events: none; }
+.tzi-burst i {
+  position: absolute; left: 0; top: 0; display: block;
+  animation: tzi-burst 1.1s cubic-bezier(.15, .7, .25, 1) both;
+}
+
+/* — entrance: the tag drops onto the ribbon once the heading font is ready — */
+.tzi-tag { opacity: 0; }
+.is-in .tzi-tag { animation: tzi-drop .8s cubic-bezier(.2, .8, .25, 1.15) .1s both; }
+.is-in.is-opening .tzi-tag { animation: tzi-lift .7s cubic-bezier(.5, 0, .75, 0) forwards; }
+
+@keyframes tzi-drop {
+  from { opacity: 0; transform: translateY(-36px) rotate(-7deg); }
+  to   { opacity: 1; transform: rotate(-2deg); }
+}
+@keyframes tzi-lift {
+  0%   { opacity: 1; transform: rotate(-2deg); }
+  22%  { opacity: 1; transform: translateY(10px) rotate(-1deg); }
+  100% { opacity: 1; transform: translateY(-115vh) rotate(-14deg); }
+}
+@keyframes tzi-burst {
+  0% { transform: translate(-50%, -50%) scale(.4); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y2))) rotate(var(--rot)) scale(1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-in .tzi-tag, .is-in.is-opening .tzi-tag { animation: none; opacity: 1; transform: rotate(-2deg); }
+  .tzi-door { transition: none; }
+  .is-opening .tzi-door--a, .is-opening .tzi-door--b { transform: none; }
+  #tz-intro.is-opening { opacity: 0; transition: opacity .3s ease; }
+}

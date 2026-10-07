@@ -41,6 +41,12 @@ Wat vinden we het superleuk dat jullie er zijn! 🥰 We zijn heel blij om jullie
 youssef
 Hallo, Youssef hier. Ik wil gewoon zeggen : blijf doen waar jullie mee bezig zijn en blijf grote dromen hebben. Als jullie er hard voor blijven werken, weet ik zeker dat jullie die dromen ook kunnen waarmaken. Blijf erin geloven en geef nooit op!
 
+Jonas
+Hey allemaal het was me echt een eer om jullie allemaal te mogen ontmoeten en ik heb echt een geweldige twee weken gehad ik hoop dat jullie dit bezoek nooit zullen vergeten we hebben veel samen meegemaakt en hopelijk mooie herrineringen opgebouwd ik wens jullie allemaal heel veel succes in Tanzania ik weet wel 1 ding zolang je je passie blijft volgen zul je altijd een winnaar zijn of je nu arm of rijk bent zolang je blijft doen wat je graag doet ben je de winnaar geef ook de groeten aan jullie families thuis als jullie ooit hulp nodig hebben met vragen over laptops, computers, telefoons, of iets met elektronica stuur mij een berichtje of bel me op ik zal er altijd staan voor jullie veel succes nog en geef noit op!!!!
+
+femke
+Het voelt bijzonder en tegelijk heel vertrouwd om jullie opnieuw te ontmoeten, dit keer hier in België. Na onze mooie tijd samen in Tanzania is het fijn om nu onze ervaringen, verhalen en vriendschap verder te delen. Afstanden verdwijnen wanneer mensen elkaar echt leren kennen. We zijn blij dat jullie hier zijn en kijken ernaar uit om jullie opnieuw in Tanzania te zien!
+
 
 Karolien
 It was a true privilege and an honor to host you here in Belgium. Your incredible hospitality made me feel completely at home in Tanzania last year, and I truly hope you felt just as welcome during your time here. It has been incredibly enriching to share experiences and exchange ideas with one another and to explore Lier with you. You are true bowling pros! 😉 Your positivity and gratitude are deeply engraved in my heart. I truly hope we will meet again in Tanzania!
